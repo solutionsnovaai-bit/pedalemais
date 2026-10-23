@@ -4,19 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./motion.css" />
+<link rel="stylesheet" href="./loader.css" />
 <script src="./intro.js" defer></script>
 <script src="./support.js"></script>
 </head>
 <body>
-<div id="pmf-intro" aria-hidden="true">
-  <div class="intro-grid"></div>
-  <div class="intro-orbit">
-    <svg viewBox="0 0 240 240" class="intro-wheel"><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="94"/><g><path d="M120 26V214M26 120H214M53.5 53.5L186.5 186.5M53.5 186.5L186.5 53.5M84 33L156 207M33 84L207 156M33 156L207 84M84 207L156 33"/></g><circle class="intro-hub" cx="120" cy="120" r="10"/></svg>
-    <span class="intro-coordinate">40+</span>
+<div id="pmf-intro" aria-label="Abertura Pedale Mais Forte">
+  <div class="load-shutter load-shutter-top" aria-hidden="true"></div>
+  <div class="load-shutter load-shutter-bottom" aria-hidden="true"></div>
+  <div class="load-grid" aria-hidden="true"></div>
+  <div class="load-topline"><span>PEDALE MAIS FORTE</span><span>DEPOIS DOS 40</span></div>
+  <div class="load-scene" aria-hidden="true">
+    <div class="load-speed"><i></i><i></i><i></i><i></i></div>
+    <div class="load-dial">
+      <svg class="load-ring" viewBox="0 0 320 320"><circle cx="160" cy="160" r="151"/><circle class="load-ring-progress" cx="160" cy="160" r="151" pathLength="100"/></svg>
+      <svg class="load-wheel" viewBox="0 0 320 320"><circle class="load-tire" cx="160" cy="160" r="126"/><circle cx="160" cy="160" r="116"/><g class="load-spokes"><path d="M160 44V276M44 160H276M78 78L242 242M78 242L242 78M116 53L204 267M53 116L267 204M53 204L267 116M116 267L204 53"/></g><circle class="load-hub" cx="160" cy="160" r="16"/></svg>
+      <div class="load-center">40<span>+</span></div>
+      <span class="load-orbit-label">SEU PRÓXIMO NÍVEL</span>
+    </div>
+    <div class="load-title"><div><span>PEDALE</span></div><div><span>MAIS <em>FORTE.</em></span></div></div>
+    <p class="load-tagline">A IDADE MUDA. A VONTADE NÃO.</p>
   </div>
-  <div class="intro-wordmark">PEDALE<br/><span>MAIS FORTE.</span></div>
-  <div class="intro-caption">SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</div>
-  <div class="intro-line"><i></i></div>
+  <div class="load-bottom"><div class="load-meta"><span id="load-status" role="status">Preparando sua próxima trilha</span><span id="load-percent" aria-hidden="true">00</span></div><div class="load-track" aria-hidden="true"><i></i></div><div class="load-bottom-row"><span>CIÊNCIA • ENERGIA • EVOLUÇÃO</span><button id="load-skip" type="button">Pular abertura ↗</button></div></div>
 </div>
 
 <x-dc>

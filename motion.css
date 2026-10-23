@@ -92,29 +92,7 @@ html.pmf-loading #hero .hero-copy > * { animation-play-state:paused !important; 
 @keyframes pmf-enter { from { opacity:0; transform:translate3d(0,28px,0); filter:blur(5px); } to { opacity:1; transform:translate3d(0,0,0); filter:blur(0); } }
 @keyframes pmf-faq { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
 @keyframes pmf-marquee { to { transform:translateX(calc(-50% - 12px)); } }
-/* Intro is independent of the runtime; it cannot lock scrolling or trap focus. */
-#pmf-intro { position:fixed; inset:0; z-index:10000; background:#10251c; color:#FAF7F0; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; pointer-events:none; animation:intro-failsafe .65s 4s forwards; }
-#pmf-intro::after { content:""; position:absolute; width:75vw; height:75vw; border:1px solid rgba(181,201,60,.07); border-radius:50%; pointer-events:none; }
-.intro-grid { position:absolute; inset:0; background:linear-gradient(rgba(181,201,60,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(181,201,60,.035) 1px,transparent 1px); background-size:70px 70px; mask-image:radial-gradient(ellipse,black,transparent 75%); }
-.intro-orbit { position:relative; width:clamp(130px,22vw,200px); margin-bottom:32px; }
-.intro-wheel { display:block; width:100%; fill:none; stroke:#B5C93C; stroke-width:1.1; animation:intro-spin 2.3s cubic-bezier(.35,0,.15,1) both; }
-.intro-wheel g { opacity:.45; }
-.intro-wheel > circle:first-child { stroke-width:2; stroke-dasharray:650; animation:intro-draw 1.4s ease-out both; }
-.intro-wheel .intro-hub { fill:#D85A30; stroke:none; }
-.intro-coordinate { position:absolute; right:-12px; top:0; font:12px monospace; letter-spacing:.1em; color:#D85A30; }
-.intro-wordmark { position:relative; font:800 clamp(34px,7vw,68px)/.95 'Arial',sans-serif; text-align:center; letter-spacing:-.055em; animation:pmf-enter .8s var(--pmf-ease) both; }
-.intro-wordmark span { color:#B5C93C; }
-.intro-caption { font:9px/1.6 monospace; letter-spacing:.2em; margin:24px 20px 0; text-align:center; opacity:.65; animation:pmf-enter .8s .12s both; }
-.intro-line { width:min(220px,55vw); height:1px; background:#ffffff18; margin-top:32px; overflow:hidden; }
-.intro-line i { display:block; height:100%; background:#D85A30; transform-origin:left; animation:intro-progress 1.6s var(--pmf-ease) both; }
-#pmf-intro.intro-leaving { animation:intro-exit .75s var(--pmf-ease) forwards; }
-@keyframes intro-spin { from { transform:rotate(-160deg) scale(.85); opacity:0; } to { transform:rotate(180deg) scale(1); opacity:1; } }
-@keyframes intro-draw { from { stroke-dashoffset:650; } to { stroke-dashoffset:0; } }
-@keyframes intro-progress { from { transform:scaleX(0); } to { transform:scaleX(1); } }
-@keyframes intro-exit { to { clip-path:inset(0 0 100% 0); visibility:hidden; } }
-@keyframes intro-failsafe { to { opacity:0; visibility:hidden; } }
 @media (prefers-reduced-motion:reduce) {
-  #pmf-intro { display:none !important; }
   #pmf-root *, #pmf-root *::before, #pmf-root *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
   #pmf-root [data-reveal], #hero .hero-copy > * { opacity:1 !important; transform:none !important; filter:none !important; }
   #pmf-root .scroll-image, #pmf-root #viradaParallaxImg { translate:none !important; }
