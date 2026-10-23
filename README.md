@@ -6,11 +6,13 @@ Página de vendas estática (HTML + JS puro, sem build step). Pronta para deploy
 
 ```
 index.html      página completa (navbar + sidebar mobile, hero, blocos 1–12, carrossel de mockups, oferta, FAQ, fechamento)
+motion.css      direção de motion e regras responsivas
+intro.js        abertura animada independente, com limite de duração
 support.js      runtime que renderiza o template (carrega React via CDN em runtime)
 assets/         imagens usadas na página
-  hero.png          roda de bike em contraluz — hero
-  virada.png        bikes/barracas ao amanhecer — bloco "A Virada"
-  cume.png          bike no cume — bloco de fechamento
+  hero.webp          roda de bike em contraluz — hero
+  virada.webp        bikes/barracas ao amanhecer — bloco "A Virada"
+  cume.webp          bike no cume — bloco de fechamento
   mockup-1.jpeg     e-book em tablet/notebook/celular — carrossel
   mockup-2.jpeg     capa empilhada sobre livros — carrossel + og:image
   mockup-3.jpeg     e-book aberto em tablet — carrossel
@@ -48,3 +50,14 @@ Também funciona em GitHub Pages (ative Pages apontando para a branch/raiz) ou a
 
 - Sem dependências externas além de Google Fonts e React/ReactDOM (carregados via CDN pelo `support.js`).
 - Nenhuma lib de smooth-scroll — scroll 100% nativo.
+
+## Motion e responsividade
+
+- Abertura com roda desenhada, rotação e saída em cortina a cada carregamento. O hero entra em sequência após a abertura; teclado e limite de 3,5 segundos liberam a página mesmo com imagens ou dependências lentas.
+- Parallax vertical responde ao scroll em desktop e touch. Atualizações usam `requestAnimationFrame` e apenas cenas próximas da área visível; a barra de leitura usa transform e não dispara render do React a cada pixel.
+- Cards usam `minmax(min(100%, ...), 1fr)`, e o bônus principal ocupa a linha disponível sem criar uma coluna extra. Credibilidade alterna entre uma, duas e quatro colunas.
+- Hero e fechamento têm composição específica abaixo de 760 px: foto no topo, degradê e texto na sequência, sem esticar uma foto horizontal pela altura inteira do conteúdo.
+- Fotos WebP mantêm as dimensões dos originais; PNGs continuam disponíveis como fontes. As três fotos passam de aproximadamente 17 MB para 2,2 MB.
+- `prefers-reduced-motion` remove parallax e animações, mantém o conteúdo visível e oferece os mockups em rolagem manual. Escape fecha o menu mobile.
+
+As regras em `motion.css` têm precedência explícita sobre os estilos inline do template legado. O projeto continua sem etapa de build: publique a raiz, incluindo os dois novos arquivos e os WebP.
